@@ -72,45 +72,7 @@ public class life {
 		Scanner scanner = new Scanner(System.in);
 		int generation = scanner.nextInt();
 		
-		
-		/* create threads NOTE, I couldn't get the threads to work, but the criteria works so I put them in loop to demonstrate that sorry!
-//		int mN = m * n; /* holds value of m * n, 25 for 5 by 5 */
-//		int d = 0;
-//		int e = 0;
-//		int counter = 0;
-//		GridThread[] thr = new GridThread[25];
-//		while (d < m) {
-//			while (e < n) {
-//				thr[counter] = new GridThread();
-//				thr[counter].addCoord(d, e);
-//				thr[counter].addBeforeGrid(beforeGrid);
-//				thr[counter].addAfterGrid(afterGrid);
-//				e++;
-//				counter++;
-//			}
-//			d++;
-//		}
-//			
-//		/* start threads */
-//		for (int f = 0; f < mN; f++) {
-//			thr[f].start();
-//		}
-//			
-//		// Block until all 3 are finished
-//	     try {	 
-//		   for (int i = 0; i < mN; i++ ) {
-//			   thr[i].join();
-//	       }
-//	     }
-//		     
-//		 catch (InterruptedException err) {
-//		       System.out.println (err);
-//		 }
-//		
-//	}
-		
 		/* will check conditions to then make final grid */
-		
 		int count = 0;
 		while (count < generation) {
 			System.out.println("Final grid:  ");
@@ -121,8 +83,7 @@ public class life {
 				}
 				System.out.println();
 			}
-			
-			
+		
 			for(int k = 0; k < 5; k++) {
 				for (int b = 0; b < 5; b++) {
 					beforeGrid[k][b] = afterGrid[k][b];
@@ -138,9 +99,6 @@ public class life {
 		private int m; /* the m this thread looks at */
 		private int n; /* the n this thread looks at */
 		
-		public GridThread() {
-			// TODO Auto-generated constructor stub
-		}
 		public void addCoord(int x, int y) {
 			m = x;
 			n = y;
@@ -152,9 +110,11 @@ public class life {
 		public void addBeforeGrid(int [][] before) {
 			beforeGrid = before;
 		}
+		
 		public void addAfterGrid(int [][] after) {
 			afterGrid = after;
 		}
+		
 		public void run() {
 			checkGrid(m,n,5, 5, beforeGrid, afterGrid);
 			System.out.println("Final grid:  ");
